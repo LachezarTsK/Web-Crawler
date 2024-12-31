@@ -7,12 +7,7 @@
  that is applied for this data structure.
  */
 
-/**
- * @param {string} startUrl
- * @param {HtmlParser} htmlParser
- * @return {string[]}
- */
-var crawl = function (startUrl, htmlParser) {
+function crawl(startUrl: string, htmlParser: HtmlParser): string[] {
 
     // Index jump over 'http://'
     this.START_INDEX_HOSTNAME_PROPER = 7;
@@ -22,7 +17,7 @@ var crawl = function (startUrl, htmlParser) {
     const queue = new Queue();
     queue.enqueue(startUrl);
 
-    const visited = new Set();
+    const visited = new Set<string>();
     visited.add(startUrl);
 
     while (!queue.isEmpty()) {
@@ -40,11 +35,8 @@ var crawl = function (startUrl, htmlParser) {
     return Array.from(visited);
 };
 
-/**
- * @param {string} startUrl
- * @return {string}
- */
-function extractTargetHostname(startUrl) {
+
+function extractTargetHostname(startUrl: string): string {
     const host = "http://".split('');
     for (let i = this.START_INDEX_HOSTNAME_PROPER; i < startUrl.length; ++i) {
         if (startUrl.charAt(i) === this.PATH_SEPARATOR) {
@@ -55,11 +47,8 @@ function extractTargetHostname(startUrl) {
     return host.join('');
 }
 
-/**
- * @param {string} url
- * @return {boolean}
- */
-function hasTargetHostname(url) {
+
+function hasTargetHostname(url: string): boolean {
     if (this.targetHostname.length > url.length) {
         return false;
     }
@@ -85,5 +74,5 @@ function HtmlParser() {
      * @param {string} url
      * @return {string[]}
      */
-    this.getUrls = function (url) { };
+    getUrls(url: string): string[] { }
 }
