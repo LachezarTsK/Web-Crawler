@@ -63,6 +63,7 @@ function hasTargetHostname(url) {
     if (this.targetHostname.length > url.length) {
         return false;
     }
+    
     for (let i = 0; i < this.targetHostname.length; ++i) {
         if (this.targetHostname.charAt(i) !== url.charAt(i)) {
             return false;
